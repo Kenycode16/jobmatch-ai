@@ -19,6 +19,8 @@ function detectPage() {
         scrapeJobList();
     } else if (url.includes('/jobs/view')) {
         scrapeJobDetail();
+    } else {
+        console.warn('JobMatch: Unknown LinkedIn page:', url);
     }
 }
 
@@ -28,10 +30,11 @@ function scrapeJobList() {
     const jobs = [];
 
     cards.forEach((card) => {
-        // TODO: Extract jobId, title, company, location from each card
-        // TODO: Build the job URL from jobId
-        // TODO: Push job object to jobs array
+
         const jobId = card.getAttribute('data-job-id');
+
+        if (!jobId) return;
+
         const link = card.querySelector('.job-card-container__link');
         const title = card.querySelector('.artdeco-entity-lockup__title')?.innerText.trim() || '';
         const company = card.querySelector('.artdeco-entity-lockup__subtitle')?.innerText.trim() || '';
@@ -54,7 +57,9 @@ function scrapeJobList() {
         const merged = [...newJobs, ...existing];
         chrome.storage.local.set({ jobs: merged }, () => {
             console.log(`Found ${newJobs.length} new jobs. Total: ${merged.length}`);
-            chrome.runtime.sendMessage({ action: "scrapeDone", data: { count: merged.length } });
+            try {
+                chrome.runtime.sendMessage({ action: "scrapeDone", data: { count: merged.length } });
+            } catch (e) { }
         });
     });
 }
@@ -62,11 +67,10 @@ function scrapeJobList() {
 
 // ========== MODE 2: Single Job Detail Page ==========
 function scrapeJobDetail() {
-    // TODO: Extract title, company, description, primaryInfo
-    // (You already wrote this code before!)
-    // TODO: Save to chrome.storage.local
 
     const jobDetail = {
+        jobId: window.location.pathname.split('/').filter(Boolean).pop(),
+        url: window.location.href,
         title: document.querySelector('.job-details-jobs-unified-top-card__job-title')?.innerText.trim() || '',
         company: document.querySelector('.job-details-jobs-unified-top-card__company-name')?.innerText.trim() || '',
         description: document.querySelector('#job-details')?.innerText.trim() || '',
@@ -74,7 +78,10 @@ function scrapeJobDetail() {
     };
     chrome.storage.local.set({ jobDetail: jobDetail }, () => {
         console.log('Job detail saved:', jobDetail);
-        chrome.runtime.sendMessage({ action: "scrapeDone", data: { jobDetail } });
+        try {
+            chrome.runtime.sendMessage({ action: "scrapeDone", data: { jobDetail } });
+        } catch (e) { }
+
     });
 
 }
