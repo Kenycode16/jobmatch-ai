@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JobMatch AI</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <h1>JobMatch AI</h1>
+    <label for="jobTitle">Job Title:</label>
+    <input type="text" id="jobTitle" name="jobTitle" placeholder=" e.g., Software Engineer"><br><br>
+    <label for="location">Location:</label>
+    <input type="text" id="jobLocation" name="jobLocation" placeholder=" e.g., New York, NY">
+    <label for="Experience">Experience Level:</label>
+    <select id="experience" name="experience">
+        <option value="Any">Any</option>
+        <option value="1">Internship</option>
+        <option value="2">Entry</option>
+        <option value="3">Associate</option>
+        <option value="4">Mid-Senior</option>
+    </select><br><br>
+    <label for="Work Type">Work Type:</label>
+    <select id="workType" name="workType">
+        <option value="Any">Any</option>
+        <option value="1">On-site</option>
+        <option value="2">Remote</option>
+        <option value="3">Hybrid</option>
+    </select><br><br>
+    <label for="Time Posted">Time Posted:</label>
+    <select id="timePosted" name="timePosted">
+        <option value="r86400">Past 24hrs</option>
+        <option value="r604800">Past Week</option>
+        <option value="r2592000">Past Month</option>
+    </select><br><br>
+    <button id="searchBtn">Search Jobs</button>
+    <div id="status"></div>
+    <script src="popup.js"></script>
+</body>
+
+</html>

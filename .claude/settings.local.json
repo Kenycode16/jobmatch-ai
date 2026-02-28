@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /c/Users/medza/Desktop/jobmatch-ai-main/jobmatch-ai-main/client/src/components/*.jsx)",
+      "Bash(file /c/Users/medza/Desktop/jobmatch-ai-main/jobmatch-ai-main/client/src/components/*.jsx)"
+    ]
+  }
+}

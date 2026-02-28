@@ -1,0 +1,48 @@
+/* popup/popup.css */
+body {
+    width: 350px;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+}
+
+input, select {
+    width: 100%;
+    padding: 6px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #005f8d;
+}
+
+#status {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #333;
+}
