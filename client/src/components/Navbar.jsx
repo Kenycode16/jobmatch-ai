@@ -1,18 +1,16 @@
 function Navbar() {
     return (
-        <nav className="bg-gray-800 p-4">
-            <div className="container mx-auto">
-                <div className="flex justify-between items-center">
-                    <div className="text-white font-bold text-xl">JobMatch AI</div>
-                    <div className="flex space-x-4">
-                        <a href="#" className="text-gray-300 hover:text-white">Dashboard</a>
-                        <a href="#" className="text-gray-300 hover:text-white">Saved Jobs</a>
-                        <a href="#" className="text-gray-300 hover:text-white">Upload Resume</a>
-                    </div>
-                </div>
+        <nav className="bg-gray-800 border-b border-gray-700 px-6 py-4 flex justify-between items-center">
+            <h1 className="text-xl font-bold text-blue-400">🎯 JobMatch AI</h1>
+            <div className="flex gap-4">
+                <button className="text-gray-300 hover:text-white">Dashboard</button>
+                <button className="text-gray-300 hover:text-white">Saved Jobs</button>
+                <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white">
+                    Upload Resume
+                </button>
             </div>
         </nav>
-    );
+    )
 }
 
-export default Navbar;
+export default Navbar
